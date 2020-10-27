@@ -19,8 +19,6 @@ function(input, output, session) {
     dfplot2 = gathered_percentage_stage_allFoodGroups[!is.na(gathered_percentage_stage_allFoodGroups$FoodGroup),]
     dfplot2 = dfplot2[dfplot2$FoodGroup == input$FoodGroup,]
     dfplot2
-    # dfplot2 = agg_foodgroups_allYears[!is.na(agg_foodgroups_allYears),]
-    # dfplot2 = dfplot2[dfplot2]
   })
   
   # Output map        
@@ -49,7 +47,7 @@ function(input, output, session) {
                                                color = "red",
                                                fillOpacity = 0.7,
                                                bringToFront=TRUE),
-                  label=lapply(df$label, HTML))
+                                               label=lapply(df$label, HTML))
     
   })
   
