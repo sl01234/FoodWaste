@@ -28,9 +28,9 @@ function(input, output, session) {
     df <- filtered()
     df$label <- paste("<strong>Country:</strong>",df$NAME, "<br>",
                       "<strong>Cereals Production(kg/capita):</strong>", df$AggProduction, "<br>",
-                      "<strong>Cereals Supply(kg/capita):</strong> ",df$AggFinalSupply, "<br>",
+                      "<strong>Cereals Supply(kg/capita):</strong> ", df$AggFinalSupply, "<br>",
                       "<strong>Dairy Production(kg/capita): </strong>", df$AggProduction.1, "<br>",
-                      "<strong>Dairy Supply(kg/capita): </strong>",df$AggFinalSupply.1, "<br>",
+                      "<strong>Dairy Supply(kg/capita): </strong>", df$AggFinalSupply.1, "<br>",
                       "<strong>Seafood Production(kg/capita): </strong>", df$AggProduction.2, "<br>",
                       "<strong>Seafood Supply(kg/capita):</strong> ",df$AggFinalSupply.2, "<br>",
                       "<strong>Fruits and Vegetables Production(kg/capita): </strong> ",df$AggProduction.3, "<br>",
@@ -69,7 +69,11 @@ function(input, output, session) {
  
     output$my_foodgroup <- renderPlot({
       dfplot2 <- filteredPlot2() %>%
-        ggplot(., aes(x=Region, y=Percentage_by_Weight, fill=Stage, labels=FALSE)) +
+        ggplot(., aes(x=Region, y=Percentage_by_Weight, 
+                      fill=fct_relevel(Stage, 
+                                       "Consumption","Distribution..Supermarket_Retail", "Processing_and_Packaging",  
+                                       "Postharvest_Handling_and_Storage","Agricultural_Production"), 
+                                        labels=FALSE)) +
         geom_bar(stat='identity') +
         ylab("Weight Percentages of Waste at Each Step") +
         theme(axis.text.x=element_text(angle=90)) 

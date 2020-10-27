@@ -7,7 +7,7 @@ fluidPage(
 # Sidebar Panel
     sidebarPanel(
           selectInput(inputId = "Year",
-                  label = "Select Year for Map Summary Statistics",
+                  label = "Select Year for Map Summary Statistics (then click 1st tab)",
                   choices = c("2014", "2015", "2016", "2017")),
           
           selectInput(inputId = "Year2",

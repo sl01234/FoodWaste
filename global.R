@@ -12,8 +12,9 @@ register_google(key = 'AIzaSyASeP2PsgtXuG2e1CM58o2RyIERFnRXtCg')
 shpfile <- readOGR(dsn=getwd(), layer="TM_WORLD_BORDERS_SIMPL-0.3")
 shpfile@data$ID <- 1:nrow(shpfile@data)
 View(shpfile@data)
-wideAgg_allYears <- read.csv("~/Desktop/NYCDSA/SHINY_PROJECT/Foodwaste/wideAgg_allYears.csv", stringsAsFactors=FALSE)
+wideAgg_allYears <- read.csv("~/Desktop/NYCDSA/SHINY_PROJECT/Foodwaste/wideAgg_allYears.csv")
 wideAgg_allYears <- wideAgg_allYears[!is.na(wideAgg_allYears$grpRegion),]
+
 iso3_2014 <- read.csv("~/Desktop/NYCDSA/SHINY_PROJECT/FoodWaste/iso3_2014.csv", stringsAsFactors=FALSE)
 
 # Read in barplot2 files
